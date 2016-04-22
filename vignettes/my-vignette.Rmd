@@ -1,0 +1,91 @@
+---
+title: "Normalizr"
+author: "Stephen Johnson"
+date: "''r Sys.Date()'"
+output: rmarkdown::html_vignette
+vignette: >
+        %\VignetteIndexEntry{Normalizr}
+        %\VignetteEngine{knitr::rmarkdown}
+        \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+## Normalizing data
+
+To normalize all data to 0-1:
+
+$$
+\operatorname{Data}_{out} = \frac{\operatorname{Data}_{in}}{\operatorname{Data}_{max}}
+$$
+
+This can be expanded to: 
+
+$$
+\operatorname{Data}_{out} = 0 + \frac{(\operatorname{Data}_{in} - \operatorname{Data}_{min}) \times (1 - 0)}{\operatorname{Data}_{max} - \operatorname{Data}_{min}}
+$$
+
+The general form is:
+
+$$
+\operatorname{Data}_{out} = \operatorname{Norm}_{min} + \frac{(\operatorname{Data}_{in} - \operatorname{Data}_{min}) \times (\operatorname{Norm}_{max} - \operatorname{Norm}_{min})}{\operatorname{Data}_{max} - \operatorname{Data}_{min}}
+$$
+
+```{r}
+# source('R/normalizr.R')
+```
+
+## Normalize data using defaults
+
+### If `normalize()` is called with a single argument, all the data are normalized to the range 0-1
+
+```{r}
+data <- 0:10
+norm <- normalizr::normalize(data)
+print(data)
+print(norm)
+```
+
+
+## Normalize data to a range other than 0-1
+
+### `normalize()` can be called with non-default values for `minNorm` and `maxNorm` to, e.g normalize to a percentage:
+
+```{r}
+data <- 0:10
+norm <- normalizr::normalize(data, minNorm = 0, maxNorm = 100)
+print(data)
+print(norm)
+```
+
+### `minNorm` can be greater than `maxNorm` to invert the normalization
+
+```{r}
+data <- 0:10
+norm <- normalizr::normalize(data, minNorm = 1, maxNorm = 0)
+print(data)
+print(norm)
+```
+
+
+### You can also specify `minData` and `maxData` values to consider
+
+```{r}
+data <- 0:10
+norm <- normalizr::normalize(data, minData = 0, maxData = 5)
+print(data)
+print(norm)
+```
+
+
+### Or specify `minData`, `maxData`, `minNorm` and `maxNorm` for even more control
+
+```{r}
+data <- -5:5
+norm <- normalizr::normalize(data, minData = 0, maxData = 5, minNorm = 0, maxNorm = 100)
+print(data)
+print(norm)
+```

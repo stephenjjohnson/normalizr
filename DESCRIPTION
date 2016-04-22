@@ -1,0 +1,15 @@
+Package: normalizr
+Title: Normalize data
+Version: 0.1.0
+Authors@R: person("Stephen", "Johnson", email = "stephenjjohnson+R@gmail.com", role = c("aut", "cre"))
+Description: Normalizes a vector from minData-maxData to the range minNorm-
+    maxNorm
+Depends:
+    R (>= 3.1.0)
+Licence: CC0
+LazyData: true
+RoxygenNote: 5.0.1
+Suggests: knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
