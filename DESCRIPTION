@@ -6,7 +6,7 @@ Description: Normalizes a vector from minData-maxData to the range minNorm-
     maxNorm
 Depends:
     R (>= 3.1.0)
-Licence: CC0
+Licence: GPL-3
 LazyData: true
 RoxygenNote: 5.0.1
 Suggests: knitr,
