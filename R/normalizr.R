@@ -1,3 +1,21 @@
+#     normalizr - an R function to normalize data between arbitrary bounds
+#     Copyright (C) 2016 Stephen J. Johnson
+# 
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+#     You should have received a copy of the GNU General Public License
+#     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+## normalize ---------------------------------------------------------------
+
 #' Normalize data
 #' 
 #' Normalizes x from minData-maxData to the range minNorm-maxNorm
@@ -17,3 +35,4 @@
 normalize <- function(x, minData=min(x), maxData=max(x), minNorm=0, maxNorm=1){
      minNorm + ((x - minData) * (maxNorm - minNorm) / (maxData - minData))
 }
+
